@@ -9,6 +9,7 @@ interface CartContext {
     updateCartItemQuantity: (productId: number, quantity: number) => void;
     cartCount: number;
     cartTotal: number;
+    cartTotalInEuro:string
 }
 
 const CartContextImpl = createContext<CartContext>({
@@ -18,6 +19,7 @@ const CartContextImpl = createContext<CartContext>({
     updateCartItemQuantity: () => {},
     cartTotal: 0,
     cartCount: 0,
+    cartTotalInEuro: ""
 });
 
 export const useCart = () => {
@@ -75,8 +77,24 @@ export const CartProvider = ( {children}: Props ) => {
     const cartTotal = cartItems.reduce( (total, item) => total + item.product.price * item.quantity,  0 );
     const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
 
+    const EuroCurrency = new Intl.NumberFormat('nl-NL', {
+      style: 'currency',
+      currency: 'EUR',
+    });
+
+    const cartTotalInEuro = EuroCurrency.format(cartTotal)
+
     return (
-        <CartContextImpl.Provider value={{cartItems, addToCart, removeFromCart, updateCartItemQuantity, cartTotal, cartCount}}>
+        <CartContextImpl.Provider value={{
+            cartItems, 
+            addToCart, 
+            removeFromCart, 
+            updateCartItemQuantity, 
+            cartTotal, 
+            cartCount, 
+            cartTotalInEuro
+          }}>
+            
           {children}
         </CartContextImpl.Provider>
     )

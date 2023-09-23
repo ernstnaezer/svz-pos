@@ -5,6 +5,7 @@ import '@fontsource/roboto/700.css';
 import { Container, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import { AppProps } from 'next/app';
 import { CartProvider } from '../CartContext';
+import { FooterBar } from '../components/FooterBar';
 
 const darkTheme = createTheme({
     palette: {
@@ -21,6 +22,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <CssBaseline />
                 <Container sx={{marginTop: "100px" }}>
                     <Component {...pageProps} />
+                    <FooterBar/>
                 </Container>
             </CartProvider>
         </ThemeProvider>

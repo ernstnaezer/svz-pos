@@ -11,3 +11,8 @@ export type CartItem = {
   product: Product;
   quantity: number;
 };
+
+export type OpenTap = {
+  id:string
+  cartItems:CartItem[]
+}

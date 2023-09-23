@@ -6,6 +6,7 @@ import { ProductList } from "../components/ProductList";
 import { CartView } from "../components/CartView";
 import { ProductsCategories } from "../components/ProductCategories";
 import { useState } from "react";
+import { FooterBar } from "../components/FooterBar";
 
 export default function Home () {
 
@@ -17,17 +18,18 @@ export default function Home () {
           <title>SVZ POS</title>
         </Head>
         
-        <Categories onCategoryChange={(category) => setCategory(category)}/>
-
         <Grid container spacing={2}>
           <Grid item xs={8}>
+            <Categories onCategoryChange={(category) => setCategory(category)}/>
             <Products category={category}/>
           </Grid>
           <Grid item xs={4}>
             <CartView/>
           </Grid>
         </Grid>
+        
       </>
+
     );
 }
 
