@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Button, Card, CardContent, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import Head from "next/head";
 import useSWR from "swr";
 import { OpenTap } from "../types";
@@ -14,10 +14,10 @@ export default function Home () {
           <Head>
             <title>Open bonnentjes</title>
           </Head>
-          
-          <Card sx={{height:'100%' }} variant="outlined">
-            <CardContent>             
-            <TableContainer component={Paper}>
+
+          <Grid container spacing={2} sx={{height:'100%'}}>
+          <Grid item xs={12}>
+            <TableContainer component={Paper} >
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                     <TableRow>
@@ -43,9 +43,8 @@ export default function Home () {
                     </TableBody>
                 </Table>
                 </TableContainer>
-            </CardContent>
-          </Card>
-
+                </Grid>
+                </Grid>
         </>
       );
   }
